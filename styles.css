@@ -1,0 +1,68 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0e68c; /* Light yellow background */
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: 5px solid #ffcc00; /* Yellow border */
+    text-align: center;
+}
+
+nav a {
+    color: #ffcc00; /* Yellow text */
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+h1, h2 {
+    text-shadow: 2px 2px #ffcc00; /* Yellow shadow for headers */
+}
+
+form {
+    margin: 20px 0;
+    background: #fff; /* White form background */
+    padding: 15px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Soft shadow */
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #333; /* Dark border */
+    border-radius: 5px; /* Rounded input corners */
+}
+
+button {
+    padding: 10px 15px;
+    background: #ffcc00; /* Yellow button */
+    color: #333;
+    border: none;
+    border-radius: 5px; /* Rounded button corners */
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #ffd700; /* Lighter yellow on hover */
+}
+
+#posts {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff; /* White background for posts */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
