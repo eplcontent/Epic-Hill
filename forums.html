@@ -3,27 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forums - Epic Hill</title>
+    <title>Epic Hill Forums</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="users.html">Users</a></li>
-        </ul>
-    </nav>
+    <header>
+        <h1>Welcome to Epic Hill</h1>
+        <nav>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="forums.html">Forums</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Epic Hill Forums</h2>
+        <h3>Discussion Topics</h3>
+        
+        <div class="forum-section">
+            <p>No posts available.</p>
+        </div>
+        
+        <button type="button" disabled>POST</button>
+    </main>
 
-    <h1>Epic Hill Forums</h1>
-    <h2>Discussion Topics</h2>
-    
-    <div class="forum-section">
-        <p>No posts available.</p>
-    </div>
-    
-    <button type="button" disabled>POST</button>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
 
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8wOufG01xaHLDscmJqDyWpXyT8BkQtkw",
+            authDomain: "epic-hill-xyz.firebaseapp.com",
+            projectId: "epic-hill-xyz",
+            storageBucket: "epic-hill-xyz.appspot.com",
+            messagingSenderId: "726583783106",
+            appId: "1:726583783106:web:d1d0fbaf4180ed329a555b"
+        };
+
+        const app = initializeApp(firebaseConfig);
+    </script>
 </body>
 </html>
