@@ -7,48 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Login to Epic Hill</h1>
-    </header>
-    <main>
-        <form id="login-form">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="register.html">Register here</a></p>
-    </main>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyC8wOufG01xaHLDscmJqDyWpXyT8BkQtkw",
-            authDomain: "epic-hill-xyz.firebaseapp.com",
-            projectId: "epic-hill-xyz",
-            storageBucket: "epic-hill-xyz.appspot.com",
-            messagingSenderId: "726583783106",
-            appId: "1:726583783106:web:d1d0fbaf4180ed329a555b"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        document.getElementById('login-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            // Find user by username (you'll need to implement this)
-            // After finding the user, sign in with email and password
-            signInWithEmailAndPassword(auth, `${username}@example.com`, password) // Assuming usernames are emails
-                .then(() => {
-                    window.location.href = 'forums.html';
-                })
-                .catch(error => {
-                    alert(error.message);
-                });
-        });
-    </script>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="users.html">Users</a></li>
+        </ul>
+    </nav>
+    
+    <h1>Login</h1>
+    <form>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" disabled>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" disabled>
+        </div>
+        <button type="button" disabled>Login</button>
+    </form>
+    <p><a href="register.html">Don't have an account? Register here.</a></p>
 </body>
 </html>
