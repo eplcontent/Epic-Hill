@@ -12,7 +12,7 @@
     </header>
     <main>
         <form id="login-form">
-            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="username" placeholder="Username" required>
             <input type="password" id="password" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
@@ -36,10 +36,12 @@
 
         document.getElementById('login-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            signInWithEmailAndPassword(auth, email, password)
+            // Find user by username (you'll need to implement this)
+            // After finding the user, sign in with email and password
+            signInWithEmailAndPassword(auth, `${username}@example.com`, password) // Assuming usernames are emails
                 .then(() => {
                     window.location.href = 'forums.html';
                 })
