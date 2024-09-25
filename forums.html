@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forums - Epic Hill</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Epic Hill Forums</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="logout.html" id="logout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Create a Post</h2>
+        <form id="post-form">
+            <textarea id="post-content" placeholder="Write your post here..." required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <h2>Posts</h2>
+        <div id="posts"></div>
+    </main>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8wOufG01xaHLDscmJqDyWpXyT8BkQtkw",
+            authDomain: "epic-hill-xyz.firebaseapp.com",
+            projectId: "epic-hill-xyz",
+            storageBucket: "epic-hill-xyz.appspot.com",
+            messagingSenderId: "726583783106",
+            appId: "1:726583783106:web:d1d0fbaf4180ed329a555b"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        function displayPosts() {
+            const postsDiv = document.getElementById('posts');
+            onSnapshot(collection(db, 'posts'), (snapshot) => {
+                postsDiv.innerHTML = '';
+                snapshot.forEach(doc => {
+                    const post = doc.data();
+                    postsDiv.innerHTML += `<p><strong>${post.user}</strong>: ${post.content}</p>`;
+                });
+            });
+        }
+
+        document.getElementById('post-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const content = document.getElementById('post-content').value;
+            const user = auth.currentUser.email;
+
+            addDoc(collection(db, 'posts'), {
+                content: content,
+                user: user,
+                timestamp: new Date()
+            }).then(() => {
+                document.getElementById('post-content').value = '';
+            }).catch(error => {
+                alert(error.message);
+            });
+        });
+
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                displayPosts();
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>
